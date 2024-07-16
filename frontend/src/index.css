@@ -326,6 +326,15 @@ li h2{
   border-radius: 1rem;
 }
 
+.workout-card .date{
+  font-size: .7rem;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+}
+
 .form-container {
   display: flex;
   justify-content: center;

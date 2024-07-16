@@ -2,43 +2,43 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AddWorkout = () => {
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [info, setInfo] = useState('');
   const [reps, setReps] = useState('');
   const [type, setType] = useState('push');
-  const email = 'humaidsadath2004@gmail.com'
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !info || !reps || !type) {
+    if (!title || !info || !reps || !type) {
       alert('All fields are required!');
       return;
     }
 
     try {
-
-      const response = await fetch(`http://localhost:1000/api/v1/addtask`, {
+      const response = await fetch(`http://localhost:8000/api/workouts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, info, reps, type,email }),
-      }
-      
-    );
+        body: JSON.stringify({ title, info, reps, type }),
+      });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      navigate('/workouts');
+
       const data = await response.json();
       console.log('Workout added successfully:', data);
-      setName('');
+
+      // Reset the form fields
+      setTitle('');
       setInfo('');
       setReps('');
       setType('push');
+
+      // Navigate to the workouts page
       navigate('/workouts');
     } catch (error) {
       console.error('Error adding workout:', error);
@@ -49,12 +49,12 @@ const AddWorkout = () => {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>

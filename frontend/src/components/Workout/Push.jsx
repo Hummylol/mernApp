@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import WorkoutList from '../WorkoutList/WorkoutList';
 
-const Arms = () => {
+const Push = () => {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const userId = localStorage.getItem('userId');
-
-        if (!userId) {
-          console.error('User ID not found');
-          return;
-        }
-
-        const response = await fetch(`http://localhost:1000/api/v2/getwork/push`);
+        const response = await fetch(`http://localhost:8000/api/workouts?type=push`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
         const data = await response.json();
-        setWorkouts(data.workout);
+        setWorkouts(data);
       } catch (error) {
         console.error("Error fetching workouts:", error);
       }
@@ -29,11 +21,15 @@ const Arms = () => {
     fetchWorkouts();
   }, []);
 
+  const handleDelete = (deletedId) => {
+    setWorkouts(prevWorkouts => prevWorkouts.filter(workout => workout._id !== deletedId));
+  };
+
   return (
     <>
-    <WorkoutList workouts={workouts} />
+      <WorkoutList workouts={workouts} onDelete={handleDelete} />
     </>
   );
 };
 
-export default Arms;
+export default Push;

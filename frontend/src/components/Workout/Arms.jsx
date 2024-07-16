@@ -1,5 +1,3 @@
-// Arms.js
-
 import React, { useEffect, useState } from 'react';
 import WorkoutList from '../WorkoutList/WorkoutList';
 
@@ -9,7 +7,7 @@ const Arms = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const response = await fetch(`http://localhost:1000/api/v1/workouts`);
+        const response = await fetch(`http://localhost:8000/api/workouts?type=arms`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
