@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import Home from './components/Home/Home'
+import Navbar from './components/Navbar/Navbar'
+import Signin from './components/Signin/Signin'
+import Signup from './components/Signup/Signup'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Workout from './components/Workout/Workout'
+import Arms from './components/Workout/Arms'
+import Push from './components/Workout/Push'
+import Pull from './components/Workout/Pull'
+import Addwork from './components/Addwork/Addwork'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Humaid ka kitta inch? click the count button to learn more</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count +7.4)}>
-          inch is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/signup' element={<Signup/>} />
+          <Route path='/signin' element={<Signin />} />
+          <Route path="/workouts" element={<Workout />} />
+          <Route path="/workouts/arms" element={<Arms/>} />
+          <Route path="/workouts/push" element={<Push/>} />
+          <Route path="/workouts/pull" element={<Pull />} />
+          <Route path="/workout" element={<Addwork/>} />
+        </Routes>
+      </Router>
+
     </>
   )
 }
