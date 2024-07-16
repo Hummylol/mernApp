@@ -17,7 +17,7 @@ const AddWorkout = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/api/workouts`, {
+      const response = await fetch(`https://mernapp-qqb2.onrender.com/api/workouts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const AddWorkout = () => {
       setType('push');
 
       // Navigate to the workouts page
-      navigate('/workouts');
+      navigate('https://mernapp-qqb2.onrender.com/workouts');
     } catch (error) {
       console.error('Error adding workout:', error);
     }

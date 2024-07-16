@@ -3,7 +3,7 @@ import React from 'react';
 const WorkoutList = ({ workouts, onDelete }) => {
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/workouts/${id}`, {
+      const response = await fetch(`https://mernapp-qqb2.onrender.com/api/workouts/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

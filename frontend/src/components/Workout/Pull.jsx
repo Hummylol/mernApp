@@ -7,7 +7,7 @@ const Pull = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/workouts?type=pull`);
+        const response = await fetch(`https://mernapp-qqb2.onrender.com/api/workouts?type=pull`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
