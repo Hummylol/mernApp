@@ -39,7 +39,7 @@ const AddWorkout = () => {
       setType('push');
 
       // Navigate to the workouts page
-      navigate('https://mernapp-qqb2.onrender.com/workouts');
+      navigate('/workouts');
     } catch (error) {
       console.error('Error adding workout:', error);
     }
