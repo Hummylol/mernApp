@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster,toast } from 'sonner';
 
 const WorkoutList = ({ workouts, onDelete }) => {
   const handleDelete = async (id) => {
@@ -10,6 +11,9 @@ const WorkoutList = ({ workouts, onDelete }) => {
         throw new Error('Network response was not ok');
       }
       onDelete(id); 
+      toast.success("Deleted successfully",{
+        className:"custom-toast"
+      });
     } catch (error) {
       console.error("Error deleting workout:", error);
     }
@@ -26,6 +30,7 @@ const WorkoutList = ({ workouts, onDelete }) => {
 
   return (
     <div className="workout-list">
+      <Toaster position='top-center'/>
       {workouts.map((workout) => (
         <div key={workout._id} className="workout-card">
           <h2>{workout.title}</h2>

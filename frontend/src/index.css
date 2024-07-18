@@ -473,3 +473,78 @@ button:hover {
   }
 }
 
+
+.slide-tabs {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  width: fit-content;
+  border-radius: 9999px;
+  background-color: white;
+  padding: 0.25rem;
+  list-style: none;
+}
+
+.tab {
+  position: relative;
+  z-index: 10;
+  display: block;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  text-transform: uppercase;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+@media (min-width: 768px) {
+  .tab {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+.cursor {
+  position: absolute;
+  z-index: 0;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background-color: black;
+}
+
+@media (min-width: 768px) {
+  .cursor {
+    height: 3rem;
+  }
+}
+
+.custom-toast{
+  padding: 1rem;
+}
+
+.addworkout{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.section{
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.btn{
+  height: 8rem;
+  width: 8rem;
+  background-color: rgb(17, 17, 17);
+  color: white;
+  font-size: 2rem;
+  border: none;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}

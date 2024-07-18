@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import WorkoutList from '../WorkoutList/WorkoutList';
+import { ClipLoader } from 'react-spinners';
 
 const Push = () => {
   const [workouts, setWorkouts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -15,7 +17,7 @@ const Push = () => {
         setWorkouts(data);
       } catch (error) {
         console.error("Error fetching workouts:", error);
-      }
+      }finally{setLoading(false)}
     };
 
     fetchWorkouts();
@@ -27,7 +29,14 @@ const Push = () => {
 
   return (
     <>
-      <WorkoutList workouts={workouts} onDelete={handleDelete} />
+      {
+        loading ? (
+          <div className="loader-container">
+            <ClipLoader loading={loading} color='white' size={"50px"}/>
+          </div>
+
+         ) : (<WorkoutList workouts={workouts} onDelete={handleDelete} />)
+      }
     </>
   );
 };
