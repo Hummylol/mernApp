@@ -557,3 +557,20 @@ button:hover {
   display: inline-block;
   color: yellow;
 }
+
+@media (max-width: 600px) {
+  .name {
+    font-size: 4rem; 
+  }
+
+  .namespan{
+    display: block;
+    margin-top: -15rem;
+  }
+
+  .letters-container {
+    margin-top: -3rem;
+    display: block; 
+    font-size: 6rem; 
+  }
+}
