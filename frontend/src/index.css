@@ -353,7 +353,7 @@ form {
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px; /* Max width for larger screens */
+  max-width: 500px;
 }
 
 .form-group {
@@ -414,36 +414,13 @@ button:hover {
   }
 }
 
-/* HomePage.css */
-.homepage-container {
-  background-color: rgb(24, 24, 24);
-  color: white;
-  min-height: 70vh;
+.homepage-container{
+  height: 80vh;
+  width: 98vw;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.homepage-header {
-  margin-bottom: 50px;
-}
-
-.motivation-section {
-  margin-bottom: 50px;
-}
-
-.navigation-section {
-  margin-bottom: 50px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
 .homepage-container button {
@@ -481,7 +458,7 @@ button:hover {
   width: fit-content;
   border-radius: 9999px;
   background-color: white;
-  padding: 0.25rem;
+  padding: 0.5rem;
   list-style: none;
 }
 
@@ -491,35 +468,32 @@ button:hover {
   z-index: 10;
   display: block;
   cursor: pointer;
-  padding: 0.1rem 0.5rem;
+  padding: 0.5rem 1rem;
   text-transform: uppercase;
   color: white;
   mix-blend-mode: difference;
 }
-
-@media (min-width: 768px) {
-  .tab {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-  }
-  .slide-tabs{
-    margin: 1rem 10rem;
-  }
-}
-
 .cursor {
   position: absolute;
   z-index: 0;
-  height: 1.75rem;
+  height: 2.5rem;
   border-radius: 9999px;
   background-color: black;
 }
 
-@media (min-width: 768px) {
+@media (max-width:500px) {
+  .tab {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  .slide-tabs{
+    margin: 1rem 1rem;
+  }
   .cursor {
     height: 3rem;
   }
 }
+
 
 .custom-toast{
   padding: 1rem;
@@ -548,9 +522,23 @@ button:hover {
   border: none;
 }
 
+@media (max-width:500px) {
+  .section{
+    display: none;
+  }
+}
+
 .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
+}
+
+.left{
+  position: relative;
+}
+
+.homepage-header p{
+  position: relative;
 }
