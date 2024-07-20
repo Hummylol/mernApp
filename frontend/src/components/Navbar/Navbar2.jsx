@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar2 = () => {
   return (
@@ -10,6 +11,7 @@ export const Navbar2 = () => {
 };
 
 const SlideTabs = () => {
+  const navigate = useNavigate();
   const [position, setPosition] = useState({
     left: 0,
     width: 0,
