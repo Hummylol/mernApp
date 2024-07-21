@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const Signin = () => {
   const [email, setEmail] = useState('humaidsadath2004@gmail.com');
@@ -36,8 +35,7 @@ const Signin = () => {
 
   return (
     <>
-      <motion.div 
-      className="cont">
+      <div className="cont">
         <div className="out1">
           <form onSubmit={handleSubmit}>
             <div className="field">
@@ -65,7 +63,7 @@ const Signin = () => {
             </div>
           </form>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };
