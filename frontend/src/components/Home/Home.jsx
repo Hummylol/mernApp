@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Navbar2 from '../Navbar/Navbar2';
 import { motion } from 'framer-motion';
 import Page from '../page/Page';
-import useLocomotiveScroll from '../useLocomotiveScroll';
 import gsap from 'gsap';
 
 const letterContainer = {
@@ -124,3 +123,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+import useLocomotiveScroll from '../useLocomotiveScroll';
