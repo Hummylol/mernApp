@@ -574,3 +574,12 @@ button:hover {
     font-size: 6rem; 
   }
 }
+
+.page{
+  height: 100vh;
+}
+
+[data-scroll-container] {
+  overflow: hidden;
+  position: relative;
+}

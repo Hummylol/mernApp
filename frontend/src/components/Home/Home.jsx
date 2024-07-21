@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar2 from '../Navbar/Navbar2';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Page from '../page/Page';
+import useLocomotiveScroll from '../useLocomotiveScroll';
+import gsap from 'gsap';
 
 const letterContainer = {
   hidden: { opacity: 0 },
@@ -47,6 +50,9 @@ const AnimeLetter = ({ char }) => {
 const HomePage = () => {
   const [text, setText] = useState("HUMAID");
   const navigate = useNavigate();
+  const pagesRef = useRef([]);
+
+  useLocomotiveScroll();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,25 +62,62 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const animatePages = () => {
+      pagesRef.current.forEach((page, index) => {
+        gsap.fromTo(
+          page,
+          { scale: 1, y: 0, zIndex: 10 - index },
+          {
+            scale: 0.8,
+            y: -100,
+            zIndex: 10 - index,
+            scrollTrigger: {
+              trigger: page,
+              start: 'top center',
+              end: 'bottom center',
+              scrub: true,
+            },
+          }
+        );
+      });
+    };
+
+    animatePages();
+  }, []);
+
   return (
-    <div className="homepage-container">
-      <Navbar2 />
-      <motion.p className="name">
-        <span className='namespan'>Hi, I'm </span>
+    <div id="main-container" data-scroll-container>
+      <motion.div className="homepage-container" data-scroll-section>
+        <Navbar2 />
+        <motion.p className="name">
+          <span className='namespan'>Hi, I'm </span>
           <motion.span
             key={text}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
           >
             <Anime full={text} />
           </motion.span>
-      </motion.p>
-      <div className="buttons">
-        <button onClick={() => navigate('/workouts')}>Workouts</button>
-        <button onClick={() => navigate('/progress')}>Track Progress</button>
-        <button onClick={() => navigate('/profile')}>Your Profile</button>
+        </motion.p>
+        <div className="buttons">
+          <button onClick={() => navigate('/workouts')}>Workouts</button>
+          <button onClick={() => navigate('/progress')}>Track Progress</button>
+          <button onClick={() => navigate('/profile')}>Your Profile</button>
+        </div>
+      </motion.div>
+      <div className="pages-container">
+        {["1", "2", "3"].map((text, index) => (
+          <motion.div
+            key={index}
+            ref={(el) => (pagesRef.current[index] = el)}
+            className="page"
+            data-scroll-section
+          >
+            <Page text={text} />
+          </motion.div>
+        ))}
       </div>
     </div>
   );

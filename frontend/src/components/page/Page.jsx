@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Page = ({ text }) => {
+const Page = ({ text,color}) => {
   return (
-    <motion.div className='page'>
+    <motion.div  style={{backgroundColor:`${color}`}} className='page'>
       {text}
     </motion.div>
   );
