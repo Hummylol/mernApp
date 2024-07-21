@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Navbar2 from '../Navbar/Navbar2';
 import { motion } from 'framer-motion';
 import Page from '../page/Page';
-import gsap from 'gsap';
 
 const letterContainer = {
   hidden: { opacity: 0 },
@@ -61,29 +60,6 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const animatePages = () => {
-      pagesRef.current.forEach((page, index) => {
-        gsap.fromTo(
-          page,
-          { scale: 1, y: 0, zIndex: 10 - index },
-          {
-            scale: 0.8,
-            y: -100,
-            zIndex: 10 - index,
-            scrollTrigger: {
-              trigger: page,
-              start: 'top center',
-              end: 'bottom center',
-              scrub: true,
-            },
-          }
-        );
-      });
-    };
-
-    animatePages();
-  }, []);
 
   return (
     <div id="main-container" data-scroll-container>
